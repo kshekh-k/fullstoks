@@ -77,7 +77,11 @@ export default function ShopProducts({
       />
       <ProductList loading={loading} products={_DATA.currentData()} />
 
-      <div className="flex mt-10 justify-between">
+      <div className="flex mt-10 justify-between items-center">
+      <div className="flex me-auto">
+          <p className="text-sm text-primary-400">Showing {_DATA.maxPage === page ? products.length : perpage * page} of{" "}
+          {products.length} results</p>
+        </div>
         <Pagination
           count={count}
           page={page}
@@ -87,10 +91,7 @@ export default function ShopProducts({
           onChange={handleChange}
         />
 
-        <div className="flex ms-auto">
-          Showing {_DATA.maxPage === page ? products.length : perpage * page} of{" "}
-          {products.length} results
-        </div>
+        
       </div>
     </div>
   );

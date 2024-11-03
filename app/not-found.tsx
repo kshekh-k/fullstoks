@@ -8,5 +8,5 @@ export default function NotFound() {
     <section>
       <Container>My name is not found </Container>;
     </section>
-  );
+  )
 }

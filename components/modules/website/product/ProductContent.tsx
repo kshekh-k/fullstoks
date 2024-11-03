@@ -41,11 +41,12 @@ export default function ProductContent({
   };
 
   return (
-    <section>
+    <>
       {loading && <Loading isLoading={loading} />}
-      <Container>
+     
         <div className={cn("flex gap-8 flex-wrap justify-between", className)}>
           <div className="flex flex-col flex-1 gap-4 items-start">
+          <AdditionnalDescription product={product} active={active} />
             {/* product info  */}
             <ProductInfo product={product} />
 
@@ -73,10 +74,10 @@ export default function ProductContent({
               />
             </div>
 
-            <AdditionnalDescription product={product} active={active} />
+           
           </div>
         </div>
-      </Container>
-    </section>
+     
+    </>
   );
 }

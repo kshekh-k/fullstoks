@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "./Toast";
 import { updateCart } from "@/store/cartSlice";
+import { Minusicon, Plusicon } from "@/icons";
 
 export default function QuantityCart({ item }: { item: CartItem }) {
   const { cart } = useSelector((state: IRootState) => ({ ...state }));
@@ -62,20 +63,25 @@ export default function QuantityCart({ item }: { item: CartItem }) {
   }, [item]);
 
   return (
-    <div className="inline-flex gap-4 items-center">
-      <div className="w-10 group bg-neutral-100 rounded-md p-1 grid place-content-center ">
-        <Button variant="outline" size="icon" onClick={() => updateQty("dec")}>
-          <MinusIcon />
-        </Button>
+    <>
+ 
+    <div className="flex items-center justify-center gap-1 w-28 border border-primary-900/5 rounded p-1">
+        <button className="text-primary-500 size-7 hover:bg-primary-900/10 flex justify-center items-center ease-in-out duration-200 rounded-sm"        
+            onClick={() => updateQty("dec")} >
+          <Minusicon className="size-3" />
+        </button>      
+        <p className="flex-1 text-center text-base">{qty}</p>
+        <button  className="text-primary-500 size-7 hover:bg-primary-900/10 flex justify-center items-center ease-in-out duration-200 rounded-sm"   
+          onClick={() => updateQty("inc")} >
+          <Plusicon className="size-3" />
+        </button>
       </div>
-      <span className="text-xl font-bold text-black text-center w-8">
-        {qty}
-      </span>
-      <div className="w-10 group bg-neutral-100 rounded-md p-1 grid place-content-center ">
-        <Button variant="outline" size="icon" onClick={() => updateQty("inc")}>
-          <PlusIcon />
-        </Button>
-      </div>
-    </div>
-  );
+
+
+
+
+</>  );
 }
+
+
+

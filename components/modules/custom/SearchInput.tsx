@@ -9,6 +9,7 @@ import { FormValues } from "@/types";
 import Loading from "./Loading";
 import { m } from "framer-motion";
 import SearchProduct from "./SearchProduct";
+import { Searchicon } from "@/icons";
 
 export default function SearchInput() {
   const [loading, setLoading] = useState(false);
@@ -66,16 +67,19 @@ export default function SearchInput() {
 
   return (
     <div className={cn("hidden relative w-full group", "xl:block")}>
-      <div className="border border-white bg-neutral-200 flex-1 hidden lg:flex group-hover:bg-neutral-50 group-hover:shadow-xl">
+      <div className="hidden lg:flex relative ">
         <Input
           className="appearance-none bg-transparent flex-1 
-          h-14 text-2xl"
-          placeholder="apple, iphone 15, ps5...."
+          h-12 text-base pl-14"
+          placeholder="Apple, iPhone 15, ps5...."
           ref={inputSearch}
           onInput={handleSearch}
           onMouseEnter={handleFocusOn}
           onMouseLeave={handleFocusOff}
         />
+        <span className="flex justify-center items-center absolute inset-y-0 w-10 text-primary-900/40 after:w-px after:h-8 after:bg-gray-300 after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2">
+        <Searchicon className="size-4" />
+        </span>
       </div>
 
       <m.div

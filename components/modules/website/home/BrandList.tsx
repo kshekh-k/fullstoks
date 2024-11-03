@@ -12,6 +12,7 @@ import "swiper/css";
 import { Brand } from "@/types";
 import Link from "next/link";
 import Loading from "../../custom/Loading";
+import Image from "next/image";
 
 export default function BrandList() {
   const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ export default function BrandList() {
   }, []);
 
   return (
-    <section className="py-10 relative">
+    <section className="pb-10 relative brand-slider">
       <Container>
 
         { loading && <Loading isLoading={loading} />}
@@ -72,13 +73,13 @@ export default function BrandList() {
           navigation={false}
           pagination={true}
           modules={[Autoplay, Navigation, Pagination]}
-          className={cn("mySwiper w-full flex justify-between gap-10 border border-gray-200 py-10")}
+          className={cn("w-full flex justify-between gap-10 border border-primary-900/5 p-10!rounded")}
         >
           {brands &&
             brands.slice(0, 10).map((item: Brand, idx: number) => (
               <SwiperSlide key={idx} className="relative py-6">
                 <Link href="#">
-                  <img className="bg-cover w-auto h-auto" src={item.image} width="120" height="120" alt="brand" />
+                  <Image className="object-cover w-auto h-auto" src={item.image} width={120} height={120} alt="brand" />
                 </Link>
               </SwiperSlide>
             ))}

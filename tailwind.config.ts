@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
 import "tailwindcss-animate";
+import defaultTheme from 'tailwindcss/defaultTheme'
+import forms from '@tailwindcss/forms' 
 
 const config = {
   darkMode: ["class"],
@@ -12,6 +14,10 @@ const config = {
   ],
   prefix: "",
   theme: {
+    extend: {
+      fontFamily:{
+        sans:['var(--inter)', ...defaultTheme.fontFamily.sans]
+      },
     fontSize: {
       sm: "0.8rem",
       base: "1rem",
@@ -29,7 +35,10 @@ const config = {
         },
       ],
     },
-
+boxShadow:{
+  1:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+  2:'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;',
+},
     container: {
       screens: {
         // screens are actually screen resolutions and they are used to make set the breakpoint for each one in order to make our website responsive:
@@ -69,20 +78,24 @@ const config = {
       },
     },
 
+
+    
+   
+
     colors: {
       // 'minsk'
       primary: {
-        "50": "#eef3ff",
-        "100": "#e0e8ff",
-        "200": "#c7d5fe",
-        "300": "#a5b8fc",
-        "400": "#8192f8",
-        "500": "#636df1",
-        "600": "#4846e5",
-        "700": "#3c38ca",
-        "800": "#3230a3",
-        "900": "#33348e",
-        "950": "#1c1b4b",
+        "50": "#E6E9ED",
+        "100": "#CED3DB",
+        "200": "#9DA7B8",
+        "300": "#6B7B94",
+        "400": "#3A4F71",
+        "500": "#09234D",
+        "600": "#071C3E",
+        "700": "#05152E",
+        "800": "#040E1F",
+        "900": "#02070F",
+        "950": "#010308",
       },
 
       // 'persian-red'
@@ -114,8 +127,13 @@ const config = {
       transparent: "transparent",
     },
 
-    extend: {
+   
       keyframes: {
+        shimmer: {
+          "100%": {
+            "transform": "translateX(100%)",
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -131,7 +149,9 @@ const config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    forms
+  ],
 } satisfies Config;
 
 export default config;

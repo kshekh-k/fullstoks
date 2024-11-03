@@ -8,10 +8,10 @@ export default function page() {
 }
 
 export const metadata: Metadata = {
-  title: "Full stack Ecommerce",
-  description: "Become a full stack Nextjs with this project",
+  title: "Fullstoks Fashion Store",
+  description: "A unique fashion store",
   icons: {
-    icon: "/assets/images/logo.svg",
+    icon: "/assets/images/fullstoks-fav.svg",
   },
 
   openGraph: mergeOpenGraph({

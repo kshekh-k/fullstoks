@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Languages } from "lucide-react";
+import { Globeicon } from "@/icons"; 
 import React from "react";
 
 export default function Language({
@@ -18,8 +18,8 @@ export default function Language({
 }) {
   return (
     <Select onValueChange={handleLanguage}>
-      <SelectTrigger className=" w-[140px] border-0 focus:outline-none  focus:visible-none focus:ring-0  ring-white">
-        <Languages className="text-primary-500 h-4 w-4" />
+      <SelectTrigger className="text-white rounded-none bg-transparent border-0 ring-0 w-auto gap-2 focus:ring-0">
+        <Globeicon className="size-4" />
         <SelectValue placeholder={languages} />
       </SelectTrigger>
       <SelectContent>

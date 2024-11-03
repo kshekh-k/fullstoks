@@ -4,6 +4,7 @@ import Logo from "../../custom/Logo";
 import Link from "next/link";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="mb-20 lg:mb-0 py-4">
       <Container>
@@ -34,12 +35,12 @@ export default function Footer() {
         </div>
         <hr className="my-6 border-gray-200 " />
 
-        <div className="flex items-center justify-center gap-4 text-center py-4">
-          <span className="text-sm text-gray-500 text-center">@2024</span>
-          <Link href="#" className="hover:underline">
-            Carrefour
+        <div className="flex items-center justify-center gap-4 text-center py-4 ">
+          <span className="text-primary-500 text-center">&copy; {currentYear}</span>
+          <Link href="#" className="hover:underline text-primary-500 ">
+            Fullstoks
           </Link>
-          All right reserved
+          <span className="text-primary-500 text-center">All Right Reserved</span>
         </div>
       </Container>
     </footer>

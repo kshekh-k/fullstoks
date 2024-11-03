@@ -7,5 +7,5 @@ export default function Container({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={`container h-full w-full ${className}`}>{children}</div>;
+  return <div className={`container h-full w-full max-w-screen-xl px-4 ${className}`}>{children}</div>;
 }

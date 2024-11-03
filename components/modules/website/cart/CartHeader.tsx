@@ -13,7 +13,7 @@ export default function CartHeader({ active }: { active: string }) {
           )}
         >
           <span className="flex items-center gap-4 after:mx-2 after:text-gray-200 after:content-['/'] dark:after:text-gray-500 sm:after:hidden">
-            <ChevronDownCircle className={cn("text-slate-400", active === "cart" && "text-primary-700" )} />
+            <ChevronDownCircle className={cn("text-primary-400", active === "cart" && "text-primary-700" )} />
             Cart
           </span>
         </li>
@@ -25,7 +25,7 @@ export default function CartHeader({ active }: { active: string }) {
           )}
         >
           <span className="flex items-center gap-4 after:mx-2 after:text-gray-200 after:content-['/'] dark:after:text-gray-500 sm:after:hidden">
-            <ChevronDownCircle className={cn("text-slate-400", active === "checkout" && "text-primary-700" )} />
+            <ChevronDownCircle className={cn("text-primary-400", active === "checkout" && "text-primary-700" )} />
             Checkout
           </span>
         </li>
@@ -36,7 +36,7 @@ export default function CartHeader({ active }: { active: string }) {
             active === "order" && "text-primary-700"
           )}
         >
-          <ChevronDownCircle className={cn("text-slate-400",  active === "order" && "text-primary-700" )} />
+          <ChevronDownCircle className={cn("text-primary-400",  active === "order" && "text-primary-700" )} />
           Order summary
         </li>
       </ol>

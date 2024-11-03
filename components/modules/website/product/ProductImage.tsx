@@ -8,6 +8,7 @@ import "react-medium-image-zoom/dist/styles.css";
 
 import { m } from "framer-motion";
 import Loading from "../../custom/Loading";
+import Image from "next/image";
 
 export default function ProductImage({
   className,
@@ -29,43 +30,37 @@ export default function ProductImage({
   }, [product, images, active]);
 
   return (
-    <section>
-      <Container>
 
-        { loading && <Loading isLoading={loading} /> }
-        <div className={cn("flex flex-col gap-y-6", className)}>
-          <div className="border py-10 border-slate-200 grid place-content-center h-[320px] p-2">
-            <Zoom>
-              <m.img
-                src={changeImage}
-                alt="image"
-                width="400"
-                height="400"
-                className="object-contain cursor-pointer !max-h-[400px] w-[500px]"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              />
-            </Zoom>
-          </div>
+    <>
 
-          <div className="flex items-center justify-center gap-4 mt-10">
-            {images.map((item: string, idx: number) => (
-              <div
-                onClick={() => setChangeImage(item)}
-                key={idx}
-                className="grid border-2 w-full border-slate-100 place-content-center cursor-pointer hover:border-primary-400 h-14"
-                style={{
-                  backgroundImage: `url(${item})`,
-                  backgroundPosition: "center",
-                  backgroundSize: "contain",
-                  backgroundRepeat: "no-repeat",
-                }}
-              ></div>
-            ))}
-          </div>
+      {loading && <Loading isLoading={loading} />}
+      <div className={cn("flex flex-col gap-y-6 overflow-hidden", className)}>
+        <div className="border py-10 border-primary-900/5 grid place-content-center h-96 p-2">
+          <Zoom>
+            <m.img
+              src={changeImage}
+              alt="image"
+              width="400"
+              height="400"
+              className="object-contain cursor-pointer"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            />
+          </Zoom>
         </div>
-      </Container>
-    </section>
+
+        <div className="flex items-center justify-center gap-4 mt-10">
+          {images.map((item: string, idx: number) => (
+            <div className={`p-1 border border-primary-900/10 hover:border-primary-400 overflow-hidden`} key={idx}>
+              <div onClick={() => setChangeImage(item)} className="grid w-full place-content-center cursor-pointer h-14 overflow-hidden" >
+                <Image src={item} width={50} height={50} className={'w-auto h-auto max-h-full object-cover'} alt="" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+
   );
 }

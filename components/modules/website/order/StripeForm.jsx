@@ -102,7 +102,7 @@ export default function StripeForm({ order, setLoading, loading }) {
         disabled={loading || !stripe}
         type="submit"
         className="bg-black p-8 dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full text-base font-medium leading-4 mt-auto text-white flex 
-      items-center justify-center gap-4 hover:bg-neutral-50 hover:text-black border border-slate-700"
+      items-center justify-center gap-4 hover:bg-neutral-50 hover:text-black border border-primary-700"
       >
         <Lock />
         <span className="text-2xl">Pay Order</span>

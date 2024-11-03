@@ -1,8 +1,8 @@
 import { Product } from "@/types";
 import React from "react";
 import ProductCard from "../../custom/ProductCard";
-import { ShoppingBasket } from "lucide-react";
 import Loading from "../../custom/Loading";
+import { Shoppingbagicon } from "@/icons";
 
 export default function ProductList({
   loading,
@@ -13,7 +13,7 @@ export default function ProductList({
 }) {
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 mt-10 relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10 relative">
         {!loading ? (
           products &&
           products.map((item: Product, idx: number) => (
@@ -24,11 +24,11 @@ export default function ProductList({
         )}
       </div>
       {loading === false && products.length === 0 && (
-        <div className="flex flex-col justify-center items-center py-20 px-20  gap-10 w-full">
-          <ShoppingBasket className="font-bold" size={100} />
-          <h1 className="font-medium text-center  text-2xl flex">
+        <div className="flex flex-col justify-center items-center py-20 px-20 text-primary-500 gap-5 w-full">
+          <Shoppingbagicon className="size-20"/>
+          <h3 className="font-medium text-center  text-2xl flex">
             No Product Found
-          </h1>
+          </h3>
         </div>
       )}
     </>

@@ -22,14 +22,14 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <>
       {/* Breadcrumb  */}
-      <section className="my-10">
+      <section className="py-3">
         <Container>
           <Breadcrumb>
             <BreadcrumbList className="capitalize flex flex-wrap">
-              <Link href={"/products"}>store</Link>
+              <Link href={"/products"} className="hover:text-primary-500 ease-in-out duration-200">store</Link>
               <BreadcrumbSeparator />
 
-              <Link href={`/categories/${product.category.name}/products`}>
+              <Link href={`/categories/${product.category.name}/products`} className="hover:text-primary-500 ease-in-out duration-200">
                 {product.category.name}
               </Link>
 
@@ -39,7 +39,7 @@ export default async function page({ params }: { params: { slug: string } }) {
                 <Fragment key={idx}>
                   <ul>
                     <li>
-                      <Link href={`/categories/${item.slug}/products`}>
+                      <Link href={`/categories/${item.slug}/products`} className="hover:text-primary-500 ease-in-out duration-200">
                         {item.name}
                       </Link>
                     </li>
@@ -49,7 +49,7 @@ export default async function page({ params }: { params: { slug: string } }) {
               ))}
 
               <BreadcrumbItem>
-                <BreadcrumbPage className="font-medium">
+                <BreadcrumbPage className="font-medium text-primary-500">
                   {product.name}
                 </BreadcrumbPage>
               </BreadcrumbItem>

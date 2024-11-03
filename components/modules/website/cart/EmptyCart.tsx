@@ -8,7 +8,7 @@ export default function EmptyCart() {
     <div className="flex flex-col gap-12 w-60 justify-center m-auto py-20 items-center">
       <div className="flex flex-col items-center gap-8">
         <ShoppingBasket size={50} />
-        <h1 className="flex font-medium text-2xl text-slate-700">
+        <h1 className="flex font-medium text-2xl text-primary-700">
           Your cart is empty
         </h1>
       </div>

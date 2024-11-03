@@ -9,6 +9,7 @@ import { CartItem, Product } from "@/types";
 import { IRootState } from "@/store";
 import { addToCart, updateCart } from "@/store/cartSlice";
 import { MdAddShoppingCart } from "react-icons/md";
+import { Minusicon, Plusicon, Shoppingbagicon } from "@/icons";
 
 export default function ProductQty({
   setLoading,
@@ -122,37 +123,39 @@ export default function ProductQty({
   };
 
   return (
-    <div className="flex flex-wrap lg:flex-nowrap gap-12 my-10 w-full">
-      <div className="flex items-center justify-center gap-4 w-full">
-        <Button
-          className="grow"
-          variant="primary"
-          size="icon"
+    <div className="flex flex-wrap lg:flex-nowrap w-full items-end gap-10">
+      <div className="flex flex-col gap-2">
+        <p className="text-base font-medium text-primary-500">Quantity</p>
+      <div className="flex items-center justify-center gap-1 w-40 border border-primary-900/5 rounded p-1">
+        <button
+          className="text-primary-500 size-10 hover:bg-primary-900/10 flex justify-center items-center ease-in-out duration-200 rounded-sm"        
+           
           onClick={() => updateQty("dec")}
         >
-          <Minus className="text-white" />
-        </Button>
-        <span className="w-10 text-center text-2xl">{qty}</span>
-        <Button
-          className="grow"
-          variant="primary"
-          size="icon"
+          <Minusicon className="size-4" />
+        </button>
+      
+        <p className="flex-1 text-center text-base">{qty}</p>
+        <button
+           className="text-primary-500 size-10 hover:bg-primary-900/10 flex justify-center items-center ease-in-out duration-200 rounded-sm"   
+         
+          
           onClick={() => updateQty("inc")}
         >
-          <Plus className="text-white" />
-        </Button>
+          <Plusicon className="size-4" />
+        </button>
       </div>
-
-      <div className="w-full">
+</div>
+      <div className="flex-1">
         <Button
-          className="w-full inline-flex gap-4"
+         className="!shadow-none gap-2 h-[50px] w-full font-semibold text-primary-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 border-primary-900/5"
           id="addToCart"
-          variant="default"
-          size="xl"
+          variant={'outline'}
+          size="lg"
           onClick={() => addTocartHandler()}
         >
-          <MdAddShoppingCart className="text-white" size={32} />
-          <span className="capitalize font-bold tracking-widest text-xl">
+          <Shoppingbagicon className="size-6"/>
+          <span className="capitalize font-bold text-base">
             add to cart
           </span>
         </Button>

@@ -97,29 +97,29 @@ export default function ShippingBillingAddress({
         />
         <div className="flex flex-col">
           <h1 className="text-xl font-bold">{order?.user.name}</h1>
-          {/* <span className="text-slate-500">{orders.length} Previous orders</span> */}
+          {/* <span className="text-primary-500">{orders.length} Previous orders</span> */}
         </div>
       </div>
       <hr />
       <div className="inline-flex gap-4">
         <Mail />
-        <span className="text-slate-500">{order?.user.email}</span>
+        <span className="text-primary-500">{order?.user.email}</span>
       </div>
       <div className="flex flex-col gap-1">
         <h1 className="text-xl font-bold mb-2">Shipping Address</h1>
-        <p className="text-slate-700">{order?.shippingAddress?.address}</p>
+        <p className="text-primary-700">{order?.shippingAddress?.address}</p>
       </div>
 
       <div className="flex flex-col gap-1">
         <h1 className="text-xl font-bold mb-2">Billing Address</h1>
-        <p className="text-slate-700">{order?.shippingAddress?.address}</p>
+        <p className="text-primary-700">{order?.shippingAddress?.address}</p>
       </div>
       <div className="mt-auto gap-4 flex flex-col ">
         {order?.shippingStatus !== "delivered" && (
           <Button
             disabled={loading}
             onClick={() => handledelivered()}
-            className="font-bold w-full bg-indigo-400 rounded-none border border-gray-300 text-slate-700 p-8 hover:text-white hover:bg-black"
+            className="font-bold w-full bg-indigo-400 rounded-none border border-gray-300 text-primary-700 p-8 hover:text-white hover:bg-black"
           >
             MARKED AS DELIVERED
           </Button>
@@ -128,7 +128,7 @@ export default function ShippingBillingAddress({
           <Button
             disabled={loading}
             onClick={() => handlecompleted()}
-            className="font-bold w-full bg-blue-400 border rounded-none border-gray-300 text-slate-700 p-8 hover:text-white hover:bg-black"
+            className="font-bold w-full bg-blue-400 border rounded-none border-gray-300 text-primary-700 p-8 hover:text-white hover:bg-black"
           >
             MARKED AS COMPLETED
           </Button>

@@ -1,9 +1,8 @@
-import { josephan } from "./fonts";
-import "./globals.css";
+import "./globals.scss";
 import * as React from "react";
 import Providers from "@/providers";
 import { Metadata } from "next";
-
+import { Inter } from "next/font/google";
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
@@ -35,9 +34,9 @@ export const metadata: Metadata = {
   manifest: `${process.env.NEXT_PUBLIC_SERVER_URL}/manifest.webmanifest`,
 
   icons: {
-    icon: "/assets/images/logo.svg",
-    shortcut: "/assets/images/logo.svg",
-    apple: "/assets/images/logo.svg",
+    icon: "/assets/images/fullstoks-fav.svg",
+    shortcut: "/assets/images/fullstoks-fav.svg",
+    apple: "/assets/images/fullstoks-fav.svg",
   },
 
   twitter: {
@@ -70,15 +69,16 @@ export const metadata: Metadata = {
     siteName: "NextJs App",
   },
 };
-
+const inter = Inter({ subsets: ['latin'], variable:'--inter',  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], })
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
-      <body className={`min-h-screen  ${josephan.className}`}>
+    <html lang="en" className={`${inter.variable}`}>
+      <body className={`min-h-screen  `}>
         <Providers>{children}</Providers>
       </body>
     </html>

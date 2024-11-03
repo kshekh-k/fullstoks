@@ -6,8 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { CiMoneyBill } from "react-icons/ci";
+} from "@/components/ui/select"; 
 
 export default function Currency({
   currency,
@@ -18,8 +17,8 @@ export default function Currency({
 }) {
   return (
     <Select onValueChange={handleCurrency}>
-      <SelectTrigger className=" w-[140px] border-0 focus:outline-none  focus:visible-none focus:ring-0 ring-white">
-        <CiMoneyBill className="text-primary-500 h-4 w-4" />
+       <SelectTrigger className="text-white rounded-none bg-transparent border-0 ring-0 w-auto gap-2 focus:ring-0">
+        <span>$</span>
         <SelectValue placeholder={currency} />
       </SelectTrigger>
       <SelectContent>

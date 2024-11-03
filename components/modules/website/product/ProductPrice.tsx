@@ -1,16 +1,24 @@
-import { discountPrice } from '@/lib/utils'
+// import { discountPrice } from '@/lib/utils'
 import { Option } from '@/types'
 import React from 'react'
 
 export default function ProductPrice({option}: {option: Option}) {
+ 
   return (
-    <div className='flex gap-2 flex-col'>
-        <div className="flex items-center gap-8">
-            <div className="text-primary-700 tracking-widest font-bold">
-                    ${option.discount > 0 ?
-                    discountPrice(option.price, option.discount) : option.price }
-            </div>
-        </div>
-    </div>
+    
+
+<div className="flex justify-start items-center gap-2 pr-4 pt-0 w-full">
+        <p className="text-primary-500 text-xl font-bold">Price:</p>
+        {option.discount > 0 &&
+          <p className="text-primary-500 text-xl font-bold">${option.price - (option.price * option.discount / 100)} </p>
+        }
+        <p className={`${option.discount > 0
+          ? "line-through text-gray-400 text-lg pl-1"
+          : "text-primary-500 text-xl font-bold"
+          }`}
+        >${option.price}</p> 
+         {option.discount > 0 && <p className='text-green-600 font-medium text-base'>You saved: ${option.price - (option.price - (option.price * option.discount / 100))}</p>}
+      </div> 
+    
   )
 }

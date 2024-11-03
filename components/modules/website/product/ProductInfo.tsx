@@ -8,9 +8,9 @@ export default function ProductInfo({ product }: { product: Product }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="font-bold tracking-wide lg:text-xl">
+      <h2 className="font-bold tracking-wide lg:text-xl xl:text-4xl xl:leading-snug text-primary-500">
         {product.name.substring(0, 150)}
-      </h1>
+      </h2>
 
       {/* Ratings  */}
       <div className="inline-flex items-ceneter gap-4">
@@ -25,9 +25,9 @@ export default function ProductInfo({ product }: { product: Product }) {
         <span className="pt-0">({product.reviews.length}) reviews</span>
       </div>
 
-      <div>
-        <p className="text-pretty text-sm/6">{product.description}</p>
-      </div>
+       
+        <p className="text-primary-900/60 text-sm">{product.description}</p>
+       
     </div>
   );
 }

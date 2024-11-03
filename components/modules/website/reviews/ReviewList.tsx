@@ -4,6 +4,7 @@ import { Review } from "@/types";
 import { Pagination } from "@mui/material";
 import usePagination from "@/hooks/usePagination";
 import ReviewItem from "./ReviewItem";
+import Heading from "../../custom/Heading";
 
 export default function ReviewList({ reviews }: { reviews: Review[] }) {
   const [page, setPage] = useState(1);
@@ -20,11 +21,11 @@ export default function ReviewList({ reviews }: { reviews: Review[] }) {
     <section className="py-10">
       <Container>
         <div className="flex flex-col gap-4">
-          <h1>
-            Reviews <span> + ({reviews.length})</span>{" "}
-          </h1>
-          <hr />
 
+        <Heading name={`Reviews (${reviews.length})`} />
+
+
+           
 
           {
             _DATA.currentData().map((i: Review, idx: number)=>

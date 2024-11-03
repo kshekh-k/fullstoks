@@ -29,7 +29,7 @@ export default function CartItem({ item }: { item: TCartItem }) {
   };
 
   return (
-    <div className="space-y-6 border border-slate-300 rounded-md p-4">
+    <div className="space-y-6 border border-primary-300 rounded-md p-4">
       <div className="flex flex-col md:flex-row gap-12 items-center">
         <Link className="shrink-0" href={`/products/${item.slug}`}>
           <Image

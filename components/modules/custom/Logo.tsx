@@ -4,15 +4,15 @@ import React from "react";
 
 export default function Logo() {
   return (
-    <Link id="logo" href="/" className="flex gap-4 items-center justify-center w-max">
+    <Link id="logo" href="/" className="flex relative w-60">
       <Image
-        src="/assets/images/logo.svg"
-        width="70"
-        height="70"
-        alt="logo"
+        src="/assets/images/fullstoks-logo.svg"
+        width={150}
+        height={50}
+        alt="logo" className="h-auto w-auto"
       />
-      <h2 data-testid="carrefour" className="hidden font-extrabold lg:flex text-[40px]  tracking-tigh mt-1 text-primary-900 antialiased">
-        Carrefour
+      <h2 data-testid="Full Stocks" className="sr-only">
+        Full Stoks
       </h2>
     </Link>
   );

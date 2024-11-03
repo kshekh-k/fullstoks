@@ -13,7 +13,7 @@ export default function ReviewItem({ item }: { item: Review }) {
     if (likeDisabled) {
       setLikes(likes - 1);
     } else {
-      setLikes(likes - 1);
+      setLikes(likes + 1);
     }
 
     // const data = {
@@ -32,10 +32,10 @@ export default function ReviewItem({ item }: { item: Review }) {
   const loading = false;
 
   return (
-    <article className="p-6 text-base bg-white rounded-lg ">
+    <article className="py-6 text-base bg-white rounded-lg ">
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center">
-          <div className="inline-flex item-center mr-3 text-sm text-gray-900">
+          <div className="inline-flex item-center gap-3 text-sm text-gray-900">
             <Image
               alt="review"
               src={
@@ -45,32 +45,32 @@ export default function ReviewItem({ item }: { item: Review }) {
               }
               width="40"
               height="40"
-              className="mr-2 w-auto rounded-full"
+              className="mr-2 w-auto rounded-full shrink-0"
             />
             <div className="flex flex-col">
-              <span className="text-black">
+              <p className="text-primary-500 text-base font-medium">
                 {item.reviewBy?.name ? item.reviewBy?.name : "unknown"}
-              </span>
-              <div className="flex"> {getDate(item.createdAt)}</div>
+              </p>
+              <p className="flex text-sm text-primary-900/60"> {getDate(item.createdAt)}</p>
             </div>
           </div>
         </div>
 
         <Button
           variant="outline"
-          size="icon"
-          className="bg-transparent rounded-full w-24  px-4 py-2 flex gap-4 justify-around"
+          size="sm"
+          className="bg-transparent rounded px-3 py-2 flex gap-2 justify-around text-primary-500 !shadow-none"
           disabled={loading}
           onClick={() => handleLike()}
         >
-          <ThumbsUp />
+          <ThumbsUp className="size-4 shrink-0" />
           <span>Like</span>
           <span>{likes}</span>
         </Button>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <p>{item.review} </p>
+      <div className="flex flex-col gap-2">
+        <p className="text-primary-900/60 text-sm">{item.review} </p>
         <Rating value={item.rating} precision={0.5} readOnly />
       </div>
     </article>

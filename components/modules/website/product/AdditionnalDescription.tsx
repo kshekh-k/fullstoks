@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { Product, SubCategory } from "@/types";
 import Link from "next/link";
-import { BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { BsFacebook, BsLinkedin, BsTwitterX, BsWhatsapp } from "react-icons/bs";
+import { BreadcrumbSeparator } from "@/components/ui/breadcrumb"; 
 import { usePathname } from "next/navigation";
+import { Facebookicon, Linkedinicon, Whatsappicon, Xicon } from "@/icons";
 
 export default function AdditionnalDescription({
   product,
@@ -14,14 +14,14 @@ export default function AdditionnalDescription({
 }) {
   const pathname = usePathname();
   return (
-    <ul className="flex flex-col gap-4 sm:mt-2 w-full">
-      <li className="inline-flex justify-between gap-4">
-        <span className="capitalize font-bold text-2xl">sku:</span>
+    <ul className="flex items-center gap-2 justify-between text-primary-500 w-full">
+      <li className="inline-flex justify-between gap-2">
+        <span className="uppercase">sku:</span>
         <span className="">{product.subProducts[active].sku}</span>
       </li>
 
-      <li className="inline-flex justify-between gap-4">
-        <span className="capitalize font-bold text-2xl">cateories:</span>
+      <li className="inline-flex justify-between gap-2">
+        <span className="">Cate:</span>
         <span className="">
           {product.subCategories.map((item: SubCategory, idx: number) => {
             return (
@@ -39,39 +39,39 @@ export default function AdditionnalDescription({
         </span>
       </li>
 
-      <li className="inline-flex justify-between gap-4">
-        <span className="capitalize font-bold text-2xl">share:</span>
-        <div className="inline-flex gap-4">
+      <li className="inline-flex justify-between gap-2">
+         
+        <div className="inline-flex gap-3 items-center">
           <span className="">
-            <Link
+            <Link className="hover:text-primary-900 text-primary-500 ease-in-out duration-200"
               target="_blank"
               href={`https://x.com/intent/post?url=${process.env.NEXT_PUBLIC_SERVER_URL}${pathname}`}
             >
-              <BsTwitterX className="hover:text-primary-500" />
+              <Xicon className="size-2.5" />
             </Link>
           </span>
           <span className="">
-            <Link
+              <Link className="hover:text-primary-900 text-primary-500 ease-in-out duration-200"
               target="_blank"
               href={`https://linkedin.com/shareArticle?url=${process.env.NEXT_PUBLIC_SERVER_URL}${pathname}`}
             >
-              <BsLinkedin className="hover:text-primary-500" />
+              <Linkedinicon className="size-3" />
             </Link>
           </span>
           <span className="">
-            <Link
+              <Link className="hover:text-primary-900 text-primary-500 ease-in-out duration-200"
               target="_blank"
               href={`https://facebook.com/sharer/sharer.php?url=${process.env.NEXT_PUBLIC_SERVER_URL}${pathname}`}
             >
-              <BsFacebook className="hover:text-primary-500" />
+              <Facebookicon className="size-3" />
             </Link>
           </span>
           <span className="">
-            <Link
+              <Link className="hover:text-primary-900 text-primary-500 ease-in-out duration-200"
               target="_blank"
               href={`https://web.whatsapp.com/send?text=${process.env.NEXT_PUBLIC_SERVER_URL}${pathname}`}
             >
-              <BsWhatsapp className="hover:text-primary-500" />
+              <Whatsappicon className="size-3" />
             </Link>
           </span>
         </div>

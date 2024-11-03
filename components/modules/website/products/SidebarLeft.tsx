@@ -4,6 +4,7 @@ import Heading from "../../custom/Heading";
 import CategoriesAccordion from "../../custom/CategoriesAccordion";
 import FiltersPrice from "../../custom/FiltersPrice";
 import LatestProducts from "./LatestProducts";
+import Responsivecategories from "../header/responsive-categories";
 
 export default function SidebarLeft({
   minPrice,
@@ -19,19 +20,20 @@ export default function SidebarLeft({
   setMaxPrice: (value: number) => void;
 }) {
   return (
-    <div className="max-w-[280px] w-full flex-col gap-8 h-full hidden xl:flex">
+    <div className="max-w-[280px] w-full flex-col gap-8 h-full hidden xl:flex border border-primary-900/5 p-5 rounded">
       {/* categories  */}
       <div className="flex flex-col w-full relative">
         <Heading name="browser categories" />
-        <div className="flex my-4">
-          <CategoriesAccordion className="w-full" />
-        </div>
+         
+          {/* <CategoriesAccordion className="w-full" /> */}
+          <Responsivecategories className={`flex pt-4`} />
+         
       </div>
 
       {/* filters */}
       <div className="flex flex-col w-full relative">
         <Heading name="filters" />
-        <div className="flex my-4">
+        <div className="flex pt-4">
           <FiltersPrice
             loading={loading}
             minPrice={minPrice}
@@ -46,7 +48,7 @@ export default function SidebarLeft({
 
       <div className="flex flex-col w-full relative">
         <Heading name="latest products" />
-        <div className="flex-flex-col my-4">
+        <div className="flex-flex-col pt-4">
           <LatestProducts/>
         </div>
       </div>

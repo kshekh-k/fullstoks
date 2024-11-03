@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import Skeleton from "@/components/ui/skeleton-product";
 import {
   getBestPriceWithDiscountFromProduct,
   getBestPriceWithoutDiscountFromProduct,
@@ -7,8 +7,10 @@ import {
 import { Product } from "@/types";
 import Link from "next/link";
 import React from "react";
-import { Rating } from "@mui/material";
-import CurrencyFormat from "./CurrencyFormat";
+import { Rating } from "@mui/material"; 
+import Image from "next/image";
+import { Hearticon, Shareicon } from "@/icons";
+import { Button } from "@/components/ui/button";
 
 export default function ProductCard({
   item,
@@ -31,32 +33,30 @@ export default function ProductCard({
   );
 
   return (
-    <div className="flex flex-col items-center gap-4 border border-gray-200 rounded-md pb-8 group hover:shadow-xl">
+    <>
+     
+    {loading ? (
+    <Skeleton />
+    ):(
+      <div className="flex flex-col items-center gap-4 border border-primary-900/5 rounded group bg-white ease-in-out duration-200 hover:shadow-2 hover:border-primary-900/10 ">
+
       <Link
         href={` /products/${item.slug}`}
-        className="flex relative p-1 justify-center items-center"
-      >
-        {loading ? (
-          <Skeleton className="h-[30vh]" />
-        ) : (
-          <div
-            style={{
-              height: "20vh",
-              width: "160px",
-              position: "relative",
-              backgroundImage: `url(${images[0]})`,
-              backgroundPosition: "center center",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
-        )}
+        className="flex relative p-3 justify-center items-center"
+        >
+        
+           
+        
+          <div className="h-40 w-auto overflow-hidden flex justify-center items-center">
+            <Image src={images[0]} alt="" width={160} height={160} className="object-cover w-auto max-w-full !h-auto max-h-full" />
+          </div>
+       
 
         {options.discount === 0 ? (
           ""
         ) : (
-          <div className="absolute top-20 left-0">
-            <span className="text-white text-base bg-yellow-600 px-2 py-1 rounded-r-md font-bold">
+          <div className="absolute top-2 left-0">
+            <span className="text-white text-sm bg-orange-500 px-2 py-1 rounded-r font-semibold">
               - {options.discount}%
             </span>
           </div>
@@ -64,52 +64,49 @@ export default function ProductCard({
       </Link>
 
       <div className="flex-flex-col gap-2 px-4 items-start">
-        <div className="inline-flex text-slate-300 items-center duration-300 ease-l">
+        <div className="flex text-primary-300 items-center duration-300 ease-in-out">
           <Rating
-            className="mb-2"
+            size="small"
+            className=""
             name="rating"
             value={parseFloat("4")}
             precision={0.5}
             readOnly
           />
-          <span className="ms-4 font-bold">({item.reviews.length})</span>
+          <span className="ms-1 text-sm font-semibold pt-1">({item.reviews.length})</span>
         </div>
 
-        <Link href={`/products/${item.slug}`} className="flex relative ">
-          <h1 className="h-14 text-xs text-clip text-justify text-pretty capitalize my-4 lg:text-sm">
+        <p className="text-primary-500 font-semibold text-left text-sm uppercase">Category</p>
+        <h2 className="h-14 text-sm text-left capitalize pt-1">
+          <Link href={`/products/${item.slug}`} className="flex relative text-primary-900/60 hover:text-primary-500 font-medium leading-snug ease-in-out duration-200">
             {item.name.substring(0, 60)}...
-          </h1>
-        </Link>
+          </Link>
+        </h2>
+
       </div>
 
-      <div className="flex relative justify-between mb-2 px-4">
-        <span className="absolute left-0 inset-y-2 w-2 h-2 bg-primary-900 rounded-r-full">
-          {discountRate > 0 ? (
-            <div className="flex flex-wrap gap-4">
-              <CurrencyFormat
-                value={bestPiceWithDiscount}
-                className="font-bold text-primary-900"
-              />
 
-              <CurrencyFormat
-                value={bestPiceWithoutDiscount}
-                className="line-through w-16 test-sm hidden lg:flex"
-              />
-            </div>
-          ) : (
-            <div className="flex flex-wrap gap-4">
-              <CurrencyFormat
-                value={bestPiceWithDiscount}
-                className="font-bold text-primary-900"
-              />
-              <CurrencyFormat
-                value={bestPiceWithoutDiscount}
-                className="line-through w-10 opacity-0 test-sm hidden lg:flex"
-              />
-            </div>
-          )}
-        </span>
+      <div className="flex justify-start gap-2 px-4 pt-0 w-full">
+        <p className="text-primary-700 text-base font-semibold">Price</p>
+        {discountRate > 0 &&
+          <p className="text-primary-700 text-base font-semibold">${bestPiceWithDiscount}</p>
+        }
+        <p className={`${discountRate > 0
+          ? "line-through text-gray-400 text-lg pl-1 font-medium"
+          : "text-primary-700 text-base font-semibold"
+          }`}
+        >${bestPiceWithoutDiscount}</p>
       </div>
+      <div className="flex flex-col gap-4 w-full p-4 pt-0">
+      <div className="flex justify-start w-full gap-2">
+        <button type="button" className="size-7 bg-primary-900/5 rounded-full flex justify-center items-center text-primary-500 hover:bg-primary-500 hover:text-white ease-in-out duration-200 "><Hearticon className="size-3" /></button>       
+        <button type="button" className="size-7 bg-primary-900/5 rounded-full flex justify-center items-center text-primary-500 hover:bg-primary-500 hover:text-white ease-in-out duration-200 "><Shareicon className="size-3" /></button>       
+      </div>
+      <Button type="button" variant={'outline'} className="!shadow-none font-semibold text-primary-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 border-primary-900/5">Add to Cart</Button>
+      </div>
+
     </div>
+    )}
+  </>
   );
 }

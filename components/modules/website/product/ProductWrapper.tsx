@@ -12,17 +12,17 @@ export default function ProductWrapper({ product }: { product: Product }) {
   );
 
   return (
-    <section className="my-20">
+    <section className="py-10">
       <Container>
-        <div className="flex flex-wrap  justify-between gap-10 lg:flex-nowrap">
+        <div className="gap-20 grid grid-cols-12">
           <ProductImage
-            className="text-center max-w-2xl"
+            className="text-center col-span-6"
             product={product}
             images={images}
             active={active}
           />
           <ProductContent
-            className="flex-1 w-full"
+            className="col-span-6"
             product={product}
             active={active}
             setImages={setImages}

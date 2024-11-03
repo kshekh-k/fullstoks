@@ -12,6 +12,7 @@ import Link from "next/link";
 import axios from "axios";
 import Toast from "../../custom/Toast";
 import toast from "react-hot-toast";
+import Heading from "../../custom/Heading";
 
 export default function AddReview({
   product,
@@ -76,14 +77,15 @@ export default function AddReview({
   return (
     <section>
       <Container>
-        <div className="flex flex-col w-full gap-10">
-          <div className="flex w-full font-bold text-2xl">Add review</div>
+        <div className="flex flex-col w-full gap-5">
+          <Heading name="Add review" />
+        
           <div className="flex">
-            <div className="flex flex-wrap justify-between">
-              <h1>Average note:</h1>
+            <div className="flex flex-wrap justify-between gap-2">
+              <h3>Average note:</h3>
               <div className="flex">
                 <Rating readOnly value={getRating(product)} precision={0.5} />
-                <span className="text-xl font-bold text-yellow-800">
+                <span className="text-xl ms-1 font-bold text-orange-600">
                   ({getRating(product)})
                 </span>
               </div>
@@ -109,22 +111,23 @@ export default function AddReview({
               }) => (
                 <Form>
                   <div className="flex flex-col gap-4">
-                    <Field
-                      components="textarea"
+                    <textarea                      
                       name="review"
                       className={cn(
-                        "w-full border border-black px-4 h-40 text-black ",
-                        errors && "border border-red-300"
+                        "w-full border border-primary-900/5 px-4 h-40 text-primary-500 focus:border-primary-500 outline-none focus:ring-0",
+                      
                       )}
                     />
+                    {errors && 
                     <ErrorMessage
                       name="review"
-                      component="div"
-                      className="py-2 font-bold text-red-900"
-                    />
+                      component="p"
+                      className="py-2 font-semibold text-red-500"
+                    />}
                   </div>
 
-                  <div className="flex mt-10">
+<div className="flex justify-between gap-5 pt-5">
+                  <div className="flex">
                     <Rating
                       onChange={(event) => {
                         const target = event.target as HTMLInputElement;
@@ -139,30 +142,31 @@ export default function AddReview({
                     />
                   </div>
 
-                  <div className="flex sm:w-full mt-10">
+                  <div className="flex ">
                     {session ? (
                       <Button
                         disabled={loading}
                         type="submit"
                         variant="primary"
-                        className="w-full inline-flex gap-4 items-center"
-                        size="xl"
+                        className="w-full inline-flex gap-2 items-center"
+                        size="lg"
                       >
-                        <Send />
+                        <Send className="size-4" />
                         <span className="text-xl">POST YOUR REVIEW</span>
                       </Button>
                     ) : (
                       <Button
                         variant="primary"
-                        className="w-full inline-flex gap-4 items-center"
-                        size="xl"
+                        className="w-full inline-flex gap-2 items-center"
+                        size="lg"
                         asChild
                       >
                         <Link href="/signin">
-                          <Send /> Post your review
+                        <Send className="size-4" /> Post your review
                         </Link>
                       </Button>
                     )}
+                  </div>
                   </div>
                 </Form>
               )}

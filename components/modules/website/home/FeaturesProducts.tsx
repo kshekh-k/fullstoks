@@ -12,6 +12,8 @@ import "swiper/css/pagination";
 import "swiper/css";
 import { Product } from "@/types";
 import ProductCard from "../../custom/ProductCard";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Anglelefticon, Anglerighticon } from "@/icons";
 
 export default function FeaturesProducts() {
   const [loading, setLoading] = useState(false);
@@ -36,50 +38,76 @@ export default function FeaturesProducts() {
   }, []);
 
   return (
-    <section className="py-10 relative">
+    <section className="py-10 relative featured">
       <Container>
-        <Heading name="featured products" />
-        <Swiper
-          breakpoints={{
-            360: {
-              slidesPerView: 1,
-              spaceBetween: 40,
-            },
-            575: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            1280: {
-              slidesPerView: 5,
-              spaceBetween: 40,
-            },
-          }}
-          autoplay={{
-            delay: 25000,
-            disableOnInteraction: false,
-          }}
-          spaceBetween={50}
-          slidesPerView={1}
-          navigation={false}
-          pagination={true}
-          modules={[Autoplay, Navigation, Pagination]}
-          className={cn("mySwiper h-full w-full")}
-        >
-          {products &&
-            products.slice(0, 10).map((item: Product, idx: number) => (
-              <SwiperSlide key={idx} className="relative py-10">
-                <ProductCard loading={loading} item={item} />
-              </SwiperSlide>
-            ))}
-        </Swiper>
+        <div className="relative">
+          <Heading name="featured products" />
+          {loading ? (
+            <>
+              <div className="grid grid-cols-4 gap-4">
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+              </div>
+            </>) : (<>
+              <div className="-mx-2 pt-3">
+                <Swiper
+                  breakpoints={{
+                    360: {
+                      slidesPerView: 1,
+                      spaceBetween: 0,
+                    },
+                    575: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 0,
+                    },
+                    1280: {
+                      slidesPerView: 5,
+                      spaceBetween: 0,
+                    },
+                  }}
+                  autoplay={{
+                    delay: 25000,
+                    disableOnInteraction: false,
+                  }}
+                  spaceBetween={0}
+                  slidesPerView={1}
+                  loop={true}
+                  pagination={false}
+                  modules={[Autoplay, Navigation, Pagination]}
+                  navigation={{
+                    nextEl: '.swiper-next',
+                    prevEl: '.swiper-prev',
+                  }}
+                  className={cn("mySwiper h-full w-full")}
+                >
+                  {products &&
+                    products.slice(0, 10).map((item: Product, idx: number) => (
+                      <SwiperSlide key={idx} className="p-2">
+                        <ProductCard loading={loading} item={item} />
+                      </SwiperSlide>
+                    ))}
+                </Swiper>
+              </div>
+              <div className='flex gap-2 absolute right-0 top-0'>
+                <button className={`size-8 ease-in-out duration-200 border border-primary-900/5 hover:bg-primary-900/5 rounded text-gray-400 flex items-center justify-center left-2 swiper-prev`}>
+                  <Anglelefticon className="size-3" />
+                </button>
+                <button className={`size-8 ease-in-out duration-200 border border-primary-900/5 hover:bg-primary-900/5 rounded text-gray-400 flex items-center justify-center right-2 swiper-next`}>
+                  <Anglerighticon className="size-3" />
+                </button>
+              </div>
+            </>)}
+        </div>
       </Container>
     </section>
   );

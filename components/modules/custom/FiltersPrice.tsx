@@ -23,7 +23,7 @@ export default function FiltersPrice({
       <div className="grid grid-cols-1 gap-8 md:grid-cols-1 my-4">
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label htmlFor="minPrice">Min Price</label>
+            <label htmlFor="minPrice" className="text-sm">Min Price</label>
             <input
               defaultValue={0}
               type="range"
@@ -44,7 +44,7 @@ export default function FiltersPrice({
           </div>
 
           <div>
-            <label htmlFor="minPrice">Max Price</label>
+            <label htmlFor="minPrice" className="text-sm">Max Price</label>
             <input
               defaultValue={10000}
               type="range"
@@ -70,7 +70,7 @@ export default function FiltersPrice({
               id="min-price-input"
               value={minPricePreview}
               readOnly
-              className="bock w-full rounde-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900  focus:border-primary-500 focus:ring-primary-500"
+              className="bock w-full rounded border border-primary-900/5 py-1 px-2.5 text-sm text-primary-500 focus:outline-none focus:border-primary-500 focus:ring-0"
             />
 
             <div className="flex text-sm font-medium">to</div>
@@ -81,7 +81,7 @@ export default function FiltersPrice({
               id="min-price-input"
               value={maxPricePreview}
               readOnly
-              className="bock w-full rounde-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900  focus:border-primary-500 focus:ring-primary-500"
+              className="bock w-full rounded border border-primary-900/5 py-1 px-2.5 text-sm text-primary-500 focus:outline-none focus:border-primary-500 focus:ring-0"
             />
           </div>
         </div>

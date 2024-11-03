@@ -36,7 +36,7 @@ export default function HeaderImage({ slug }: { slug?: string }) {
       {!loading ? (
         <div>
           <div
-            className="flex w-full rounded-lg bg-cover justify-center h-[350px] items-center"
+            className="flex w-full rounded bg-cover justify-center h-[350px] items-center"
             style={{
               backgroundImage: `url(${slides[0]?.image})`,
               height: "350px",

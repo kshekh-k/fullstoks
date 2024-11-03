@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { cn } from "@/lib/utils";
 import "./style.css";
 import "swiper/css/navigation";
@@ -16,93 +14,55 @@ import {
   Calendar,
 } from "lucide-react";
 
+const payment = [
+  {
+    icon: <Headset className="size-6" />,
+    title: '24/7',
+    tagline: 'Support every time',
+  },
+  {
+    icon: <CreditCard className="size-6" />,
+    title: 'Accept payment',
+    tagline: 'Visa, Paypal, Master',
+  },
+  {
+    icon: <LockKeyhole className="size-6" />,
+    title: 'Secured payment',
+    tagline: '100% Secured',
+  },
+  {
+    icon: <Truck className="size-6" />,
+    title: 'Free shipping',
+    tagline: 'over over 300$',
+  },
+  {
+    icon: <Calendar className="size-6" />,
+    title: '30 days return',
+    tagline: '30 days guarantee',
+  },
+]
+
+
 export default function Payments() {
   return (
-    <section className="mt-4">
+    <section className="bg-primary-900/5 py-4">
       <Container>
-        <Swiper
-          breakpoints={{
-            360: {
-              slidesPerView: 1,
-              spaceBetween: 40,
-            },
-            575: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            1280: {
-              slidesPerView: 5,
-              spaceBetween: 40,
-            },
-          }}
-          autoplay={{
-            delay: 25000,
-            disableOnInteraction: false,
-          }}
-          spaceBetween={50}
-          slidesPerView={1}
-          navigation={false}
-          pagination={true}
-          modules={[Autoplay, Navigation, Pagination]}
-          className={cn("mySwiper shadow-xl h-full w-full")}
-        >
-          <SwiperSlide className="relative py-10">
-            <div
-              className="flex items-center justify-center gap-8 
-            lg:after:w-[2px] lg:after:h-10 after:translate-x-14 after:bg-neutral-200"
-            >
-              <Headset className="h6 w-6 text-primary-900" />
-              <div className="flex flex-col justify-center">
-                <h1 className="uppercase font-bold">24/7</h1>
-                <h2 className="font-normal text-sm">Support every time</h2>
-              </div>
+        <div className="grid grid-cols-5 gap-4 px-3 py-10">
+    {payment.map((item, index)=>(
+          <div key={index} className={`flex items-center justify-start gap-5 relative after:w-px after:h-10 after:absolute after:top-1/2 after:left-0 after:-translate-y-1/2 after:bg-primary-200 ${index == 0 ? 'after:hidden pl-0' : 'pl-5'}`} >
+            <div className="bg-primary-500 rounded-full size-12 flex justify-center items-center text-white shrink-0">
+             {item.icon}
             </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative py-10">
-            <div className="flex items-center justify-center gap-4 lg:after:w-[2px] lg:after:h-10 after:translate-x-14 after:bg-neutral-200">
-              <CreditCard className="h6 w-6 text-primary-900" />
-              <div className="flex flex-col">
-                <h1 className="uppercase font-bold">accept payment</h1>
-                <h2 className="font-normal text-sm">visa, paypal, master</h2>
-              </div>
+            <div className="flex flex-col justify-center gap-2">
+              <h1 className="uppercase font-bold text-sm text-primary-500 leading-none">{item.title}</h1>
+              <p className="font-medium text-sm text-primary-900/60 leading-none">{item.tagline}</p>
             </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative py-10">
-            <div className="flex items-center justify-center gap-4 lg:after:w-[2px] lg:after:h-10 after:translate-x-14 after:bg-neutral-200">
-              <LockKeyhole className="h6 w-6 text-primary-900" />
-              <div className="flex flex-col">
-                <h1 className="uppercase font-bold">secured payment</h1>
-                <h2 className="font-normal text-sm">100% secured</h2>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative py-10">
-            <div className="flex items-center justify-center gap-4 lg:after:w-[2px] lg:after:h-10 after:translate-x-14 after:bg-neutral-200">
-              <Truck className="h6 w-6 text-primary-900" />
-              <div className="flex flex-col">
-                <h1 className="uppercase font-bold">free shipping</h1>
-                <h2 className="font-normal text-sm">over over 300$</h2>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative py-10">
-            <div className="flex items-center justify-center gap-4 lg:after:w-[2px] lg:after:h-10 after:translate-x-14 after:bg-neutral-200">
-              <Calendar className="h6 w-6 text-primary-900" />
-              <div className="flex flex-col">
-                <h1 className="uppercase font-bold">30 days return</h1>
-                <h2 className="font-normal text-sm">30 days guarentee</h2>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+          </div>
+))}
+
+        </div>
+
+
       </Container>
     </section>
   );

@@ -48,12 +48,14 @@ export default function TopBar({
 
         <div className="ms-auto">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">{filter ? filter : slug}</Button>
+            <DropdownMenuTrigger asChild> 
+              <button className="text-sm ms-2 bg-primary-900/5 rounded py-2 px-3 outline-none">
+                <span className="me-1">Sort: </span>
+                <span className="capitalize">{filter ? filter : slug}</span>
+              </button>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuSeparator />
+            <DropdownMenuContent className="w-44 right-0">               
               <DropdownMenuRadioGroup value="bottom">
                 <DropdownMenuRadioItem
                   value="top"
@@ -84,15 +86,18 @@ export default function TopBar({
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <span className="ms-10">Show: </span>
+
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">{perpage}</Button>
+              <button className="text-sm ms-2 bg-primary-900/5 rounded py-2 px-3 outline-none">
+                <span className="me-1">Show: </span>
+                <span className="">{perpage}</span>
+              </button>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuSeparator />
+            <DropdownMenuContent className="w-20">
+              {/* <DropdownMenuSeparator /> */}
               <DropdownMenuRadioGroup value="bottom">
                 <DropdownMenuRadioItem
                   value="30"

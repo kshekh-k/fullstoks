@@ -12,7 +12,7 @@ export default function ProductsPage() {
   return (
     <section className="my-6 h-full w-full">
       <Container>
-        <div className="flex h-full gap-14 w-full">
+        <div className="flex h-full gap-8 w-full">
           <SidebarLeft
             minPrice={minPrice}
             maxPrice={maxPrice}
@@ -21,6 +21,7 @@ export default function ProductsPage() {
             setMaxPrice={setMaxPrice}
           />
           <MainProduct
+          slug="All Categories"
             minPrice={minPrice}
             maxPrice={maxPrice}
             loading={loading}

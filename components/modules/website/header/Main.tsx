@@ -18,14 +18,15 @@ export default function Main() {
         <Row className="justify-between h-[84px] lg:gap-x-24">
           <div
             className={cn(
-              "flex items-center gap-4 ",
+              "flex items-center gap-4 justify-start",
               openSearchMobile && " hidden lg:flex"
             )}
           >
-            <SidebarMenu />
+            
             <div className="flex">
               <Logo />
             </div>
+            <SidebarMenu />
           </div>
           <div className="flex items-center gap-2 w-full justify-end lg:hidden">
             <SearchMobile

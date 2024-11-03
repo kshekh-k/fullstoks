@@ -10,7 +10,7 @@ export default function ProductSpecifications({
   product: Product;
 }) {
   return (
-    <section className="hidden lg:block my-10">
+    <section className="hidden lg:block py-5">
       <Container>
         <div className="flex flex-col col-span-2">
           <Tabs defaultValue="desc">
@@ -19,18 +19,18 @@ export default function ProductSpecifications({
               <TabsTrigger value="spec">Specifications</TabsTrigger>
             </TabsList>
             <TabsContent value="desc">
-              <Card className="p-10 tracking-wider txt-sm leading-8 ">
+              <Card className="p-7 tracking-wider text-sm leading-8 text-primary-900/60 ">
                 {product.content}
               </Card>
             </TabsContent>
             <TabsContent value="spec">
-              <Card className="p-10 flex flex-col gap-4">
+              <Card className="p-7 flex flex-col divide-y divide-primary-900/5">
                 {product.details.map((item: Detail, idx: number) => (
-                  <div key={idx} className="grid grid-cols-2">
-                    <span className="w-80 font-bold text-xl capitalize">
+                  <div key={idx} className="grid grid-cols-12 gap-2 items-center">
+                    <p className="font-medium capitalize text-primary-500 col-span-5 ">
                       {item.name}
-                    </span>
-                    <span className="text-base font-light ">{item.value}</span>
+                    </p>
+                    <p className="text-sm font-light text-primary-900/60 col-span-7 ">{item.value}</p>
                   </div>
                 ))}
               </Card>
